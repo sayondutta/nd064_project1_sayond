@@ -44,4 +44,4 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          tags: sayon1205/techtrends:latest:latest
+          tags: sayon1205/techtrends:latest
