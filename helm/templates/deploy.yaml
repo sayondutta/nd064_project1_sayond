@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ .Values.service.app }}
+  name: {{ .Values.service.app }}
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: {{ .Values.service.app }}
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.service.app }}
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: {{ .Values.service.app }}
+        resources:
+{{ toYaml .Values.resources | indent 12 }}
